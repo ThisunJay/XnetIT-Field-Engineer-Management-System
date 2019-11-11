@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="xnetModelStoreContainer" CdmEntityContainer="xnetDBEntities">
+    <EntitySetMapping Name="engineers">
+      <EntityTypeMapping TypeName="xnetModel.engineer">
+        <MappingFragment StoreEntitySet="engineer">
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="skills" ColumnName="skills" />
+          <ScalarProperty Name="e_id" ColumnName="e_id" />
+          <ScalarProperty Name="e_name" ColumnName="e_name" />
+          <ScalarProperty Name="gov_id" ColumnName="gov_id" />
+          <ScalarProperty Name="cnumber" ColumnName="cnumber" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="e_address" ColumnName="e_address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

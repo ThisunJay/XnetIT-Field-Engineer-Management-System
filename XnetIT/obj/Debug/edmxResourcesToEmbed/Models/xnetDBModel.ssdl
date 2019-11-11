@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="xnetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="engineer">
+    <Key>
+      <PropertyRef Name="e_id" />
+    </Key>
+    <Property Name="e_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="e_name" Type="varchar" MaxLength="100" />
+    <Property Name="gov_id" Type="varchar" MaxLength="30" />
+    <Property Name="cnumber" Type="char" MaxLength="10" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="e_address" Type="varchar" MaxLength="100" />
+    <Property Name="skills" Type="varchar" MaxLength="200" />
+    <Property Name="rating" Type="int" />
+  </EntityType>
+  <EntityContainer Name="xnetModelStoreContainer">
+    <EntitySet Name="engineer" EntityType="Self.engineer" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

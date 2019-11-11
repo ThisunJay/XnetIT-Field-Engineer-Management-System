@@ -69,8 +69,11 @@ D:\Visual Studio Projects\XnetIT\XnetIT\bin\System.Web.WebPages.Razor.xml
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\Newtonsoft.Json.xml
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\Antlr3.Runtime.pdb
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.csprojAssemblyReference.cache
 D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.csproj.CoreCompileInputs.cache
 D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.csproj.CopyComplete
 D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.dll
 D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.pdb
+D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.dll
+D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.SqlServer.dll
+D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.xml
+D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.SqlServer.xml
