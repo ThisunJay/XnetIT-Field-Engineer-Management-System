@@ -1,0 +1,66 @@
+﻿@model XnetIT.Models.job
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>job</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Title
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            Address
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.j_address)
+        </dd>
+
+        <dt>
+            Date
+        </dt>
+
+        <dd>
+            @DateTime.Parse(Html.DisplayFor(model => model.j_date).ToString()).ToShortDateString()
+            @*@Html.DisplayFor(model => model.j_date)*@
+        </dd>
+
+        <dt>
+            Time
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.j_time)
+        </dd>
+
+        <dt>
+            Site Contact Number
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.site_contact)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to Jobs", "Index")
+        </div>
+    }
+</div>

@@ -40,9 +40,6 @@
         <th>
             Skills
         </th>
-        <th>
-            Rating
-        </th>
         <th></th>
     </tr>
 
@@ -68,10 +65,7 @@
                 @Html.DisplayFor(modelItem => item.skills)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.rating)
-            </td>
-            <td>
-                @Html.ActionLink("Rate/Edit", "Edit", new { id = item.e_id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.e_id }) |
                 @*@Html.ActionLink("Details", "Details", new { id = item.e_id }) |*@
                 @Html.ActionLink("Delete", "Delete", new { id = item.e_id })
             </td>

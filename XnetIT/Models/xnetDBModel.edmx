@@ -16,15 +16,41 @@
           <Property Name="email" Type="varchar" MaxLength="100" />
           <Property Name="e_address" Type="varchar" MaxLength="100" />
           <Property Name="skills" Type="varchar" MaxLength="200" />
-          <Property Name="rating" Type="int" />
+        </EntityType>
+        <EntityType Name="job">
+          <Key>
+            <PropertyRef Name="job_id" />
+          </Key>
+          <Property Name="job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="100" />
+          <Property Name="j_address" Type="varchar" MaxLength="100" />
+          <Property Name="j_date" Type="date" />
+          <Property Name="j_time" Type="time" Precision="7" />
+          <Property Name="site_contact" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_email" Type="varchar" MaxLength="100" />
+          <Property Name="u_pass" Type="varchar" MaxLength="100" />
+          <Property Name="u_type" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityContainer Name="xnetModelStoreContainer">
           <EntitySet Name="engineer" EntityType="Self.engineer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="job" EntityType="Self.job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="xnetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="xnetDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="engineers" EntityType="xnetModel.engineer" />
+          <EntitySet Name="jobs" EntityType="xnetModel.job" />
+          <EntitySet Name="users" EntityType="xnetModel.user" />
+        </EntityContainer>
         <EntityType Name="engineer">
           <Key>
             <PropertyRef Name="e_id" />
@@ -36,11 +62,27 @@
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="e_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="skills" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="rating" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="xnetDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="engineers" EntityType="Self.engineer" />
-        </EntityContainer>
+        <EntityType Name="job">
+          <Key>
+            <PropertyRef Name="job_id" />
+          </Key>
+          <Property Name="job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="j_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="j_date" Type="DateTime" Precision="0" />
+          <Property Name="j_time" Type="Time" Precision="7" />
+          <Property Name="site_contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="u_pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="u_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -50,14 +92,35 @@
           <EntitySetMapping Name="engineers">
             <EntityTypeMapping TypeName="xnetModel.engineer">
               <MappingFragment StoreEntitySet="engineer">
-                <ScalarProperty Name="rating" ColumnName="rating" />
                 <ScalarProperty Name="skills" ColumnName="skills" />
-                <ScalarProperty Name="e_id" ColumnName="e_id" />
-                <ScalarProperty Name="e_name" ColumnName="e_name" />
-                <ScalarProperty Name="gov_id" ColumnName="gov_id" />
-                <ScalarProperty Name="cnumber" ColumnName="cnumber" />
-                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="e_address" ColumnName="e_address" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="cnumber" ColumnName="cnumber" />
+                <ScalarProperty Name="gov_id" ColumnName="gov_id" />
+                <ScalarProperty Name="e_name" ColumnName="e_name" />
+                <ScalarProperty Name="e_id" ColumnName="e_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobs">
+            <EntityTypeMapping TypeName="xnetModel.job">
+              <MappingFragment StoreEntitySet="job">
+                <ScalarProperty Name="site_contact" ColumnName="site_contact" />
+                <ScalarProperty Name="j_time" ColumnName="j_time" />
+                <ScalarProperty Name="j_date" ColumnName="j_date" />
+                <ScalarProperty Name="j_address" ColumnName="j_address" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="xnetModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="u_type" ColumnName="u_type" />
+                <ScalarProperty Name="u_pass" ColumnName="u_pass" />
+                <ScalarProperty Name="u_email" ColumnName="u_email" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

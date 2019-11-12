@@ -13,7 +13,8 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.e_name)
+            @*@Html.DisplayNameFor(model => model.e_name)*@
+            Name
         </dt>
 
         <dd>
@@ -21,7 +22,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.gov_id)
+            @*@Html.DisplayNameFor(model => model.gov_id)*@
+            Gov. ID
         </dt>
 
         <dd>
@@ -29,7 +31,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cnumber)
+            @*@Html.DisplayNameFor(model => model.cnumber)*@
+            Contact Number
         </dt>
 
         <dd>
@@ -37,7 +40,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.email)
+            @*@Html.DisplayNameFor(model => model.email)*@
+            Email
         </dt>
 
         <dd>
@@ -45,7 +49,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.e_address)
+            @*@Html.DisplayNameFor(model => model.e_address)*@
+            Address
         </dt>
 
         <dd>
@@ -53,19 +58,12 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.skills)
+            @*@Html.DisplayNameFor(model => model.skills)*@
+            Skills
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.skills)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.rating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.rating)
         </dd>
 
     </dl>
@@ -74,7 +72,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

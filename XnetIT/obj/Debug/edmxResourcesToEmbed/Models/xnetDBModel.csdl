@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="xnetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="xnetDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="engineers" EntityType="xnetModel.engineer" />
+    <EntitySet Name="jobs" EntityType="xnetModel.job" />
+    <EntitySet Name="users" EntityType="xnetModel.user" />
+  </EntityContainer>
   <EntityType Name="engineer">
     <Key>
       <PropertyRef Name="e_id" />
@@ -11,9 +16,25 @@
     <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="e_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="skills" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="rating" Type="Int32" />
   </EntityType>
-  <EntityContainer Name="xnetDBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="engineers" EntityType="Self.engineer" />
-  </EntityContainer>
+  <EntityType Name="job">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="j_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="j_date" Type="DateTime" Precision="0" />
+    <Property Name="j_time" Type="Time" Precision="7" />
+    <Property Name="site_contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="u_id" />
+    </Key>
+    <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="u_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="u_pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="u_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

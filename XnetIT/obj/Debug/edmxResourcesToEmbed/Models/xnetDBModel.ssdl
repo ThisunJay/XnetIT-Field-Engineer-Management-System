@@ -11,9 +11,30 @@
     <Property Name="email" Type="varchar" MaxLength="100" />
     <Property Name="e_address" Type="varchar" MaxLength="100" />
     <Property Name="skills" Type="varchar" MaxLength="200" />
-    <Property Name="rating" Type="int" />
+  </EntityType>
+  <EntityType Name="job">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="100" />
+    <Property Name="j_address" Type="varchar" MaxLength="100" />
+    <Property Name="j_date" Type="date" />
+    <Property Name="j_time" Type="time" Precision="7" />
+    <Property Name="site_contact" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="u_id" />
+    </Key>
+    <Property Name="u_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="u_email" Type="varchar" MaxLength="100" />
+    <Property Name="u_pass" Type="varchar" MaxLength="100" />
+    <Property Name="u_type" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityContainer Name="xnetModelStoreContainer">
     <EntitySet Name="engineer" EntityType="Self.engineer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="job" EntityType="Self.job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

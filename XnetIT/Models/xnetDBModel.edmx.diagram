@@ -5,7 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5e7ccec44235405bb7d4d2a2c909056d" Name="Diagram1">
-        <EntityTypeShape EntityType="xnetModel.engineer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="xnetModel.engineer" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="xnetModel.job" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="xnetModel.user" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

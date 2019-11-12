@@ -130,10 +130,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EngineersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\engineer.cs">
+      <DependentUpon>xnetDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\job.cs">
+      <DependentUpon>xnetDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user.cs">
       <DependentUpon>xnetDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\xnetDBModel.Context.cs">
@@ -215,6 +222,12 @@
     <Content Include="Views\Engineers\Create.cshtml" />
     <Content Include="Views\Engineers\Edit.cshtml" />
     <Content Include="Views\Engineers\Delete.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\Jobs\Edit.cshtml" />
+    <Content Include="Views\Jobs\Delete.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

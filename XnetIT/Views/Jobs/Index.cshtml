@@ -1,0 +1,81 @@
+﻿@model IEnumerable<XnetIT.Models.job>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Jobs</h2>
+
+<p>
+    @Html.ActionLink("Add New Job", "Create")
+</p>
+
+@foreach (var item in Model)
+{
+    <hr />
+    <div class="row">
+
+        <div class="col-sm-7">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    Title
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelItem => item.title)
+                </dd>
+
+                <dt>
+                    Address
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelItem => item.j_address)
+                </dd>
+
+                <dt>
+                    Date
+                </dt>
+
+                <dd>
+                    @DateTime.Parse(Html.DisplayFor(modelItem => item.j_date).ToString()).ToShortDateString()
+                    @*@Html.DisplayFor(modelItem => item.j_date)*@
+                </dd>
+
+                <dt>
+                    Time
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelItem => item.j_time)
+                </dd>
+
+                <dt>
+                    Site Contact Number
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelItem => item.site_contact)
+                </dd>
+
+                <dt>
+                    Options
+                </dt>
+
+                <dd>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.job_id }) |
+                    @Html.ActionLink("Remove", "Delete", new { id = item.job_id })
+                </dd>
+
+            </dl>
+
+        </div>
+
+        <div class="col-sm-5">
+            <img src="~/img/jobicon.png" style="height:200px; width:200px; float:left" />
+        </div>
+    </div>
+    <hr />
+}

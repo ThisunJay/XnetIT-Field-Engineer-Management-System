@@ -7,7 +7,15 @@
     <div style="float:right"><img src="~/img/xnetimage.png" /></div>
     <h2>Sydney</h2>
     <p class="lead">Field Engineer Management System.</p>
-    <p><button class="btn btn-primary btn-lg">Login</button></p>
+    @if (HttpContext.Current.Session["UserID"] == null)
+    {
+        @*<p><button class="btn btn-primary btn-lg">Login</button></p>*@
+        <input type="button" class="btn btn-primary btn-lg" value="Login" onclick="location.href='@Url.Action("Login", "Home")'" />
+    }
+    else
+    {
+        <input type="button" class="btn btn-primary btn-lg" value="Logout" onclick="location.href='@Url.Action("Logout", "Home")'" />
+    }
 </div>
 
 <div class="row">

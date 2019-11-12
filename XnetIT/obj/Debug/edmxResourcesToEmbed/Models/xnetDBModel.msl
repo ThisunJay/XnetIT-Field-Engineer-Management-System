@@ -4,14 +4,35 @@
     <EntitySetMapping Name="engineers">
       <EntityTypeMapping TypeName="xnetModel.engineer">
         <MappingFragment StoreEntitySet="engineer">
-          <ScalarProperty Name="rating" ColumnName="rating" />
           <ScalarProperty Name="skills" ColumnName="skills" />
-          <ScalarProperty Name="e_id" ColumnName="e_id" />
-          <ScalarProperty Name="e_name" ColumnName="e_name" />
-          <ScalarProperty Name="gov_id" ColumnName="gov_id" />
-          <ScalarProperty Name="cnumber" ColumnName="cnumber" />
-          <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="e_address" ColumnName="e_address" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="cnumber" ColumnName="cnumber" />
+          <ScalarProperty Name="gov_id" ColumnName="gov_id" />
+          <ScalarProperty Name="e_name" ColumnName="e_name" />
+          <ScalarProperty Name="e_id" ColumnName="e_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobs">
+      <EntityTypeMapping TypeName="xnetModel.job">
+        <MappingFragment StoreEntitySet="job">
+          <ScalarProperty Name="site_contact" ColumnName="site_contact" />
+          <ScalarProperty Name="j_time" ColumnName="j_time" />
+          <ScalarProperty Name="j_date" ColumnName="j_date" />
+          <ScalarProperty Name="j_address" ColumnName="j_address" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="xnetModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="u_type" ColumnName="u_type" />
+          <ScalarProperty Name="u_pass" ColumnName="u_pass" />
+          <ScalarProperty Name="u_email" ColumnName="u_email" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

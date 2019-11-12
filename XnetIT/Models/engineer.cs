@@ -21,6 +21,5 @@ namespace XnetIT.Models
         public string email { get; set; }
         public string e_address { get; set; }
         public string skills { get; set; }
-        public Nullable<int> rating { get; set; }
     }
 }

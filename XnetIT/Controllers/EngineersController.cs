@@ -116,31 +116,31 @@ namespace XnetIT.Controllers
         }
 
         //get
-        public ActionResult Rate(int id)
-        {
-            var toRate = (from eng in db.engineers where eng.e_id == id select eng);
-            return View(toRate);
-        }
+        //public ActionResult Rate(int id)
+        //{
+        //    var toRate = (from eng in db.engineers where eng.e_id == id select eng);
+        //    return View(toRate);
+        //}
 
-        [HttpPost]
-        public ActionResult Rate(engineer toRate)
-        {
-            try
-            {
-                var originalEng = (from eng in db.engineers where eng.e_id == toRate.e_id select eng).First();
+        //[HttpPost]
+        //public ActionResult Rate(engineer toRate)
+        //{
+        //    try
+        //    {
+        //        var originalEng = (from eng in db.engineers where eng.e_id == toRate.e_id select eng).First();
 
-                if (!ModelState.IsValid)
-                    return View(originalEng);
+        //        if (!ModelState.IsValid)
+        //            return View(originalEng);
 
-                db.Entry(originalEng).CurrentValues.SetValues(toRate.rating);
-                db.SaveChanges();
+        //        db.Entry(originalEng).CurrentValues.SetValues(toRate.rating);
+        //        db.SaveChanges();
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }

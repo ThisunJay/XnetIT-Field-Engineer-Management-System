@@ -1,0 +1,144 @@
+﻿@model XnetIT.Models.user
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    List<SelectListItem> TypeOfUser = new List<SelectListItem>();
+    TypeOfUser.Add(new SelectListItem() { Text = "Admin", Value = "Admin" });
+    TypeOfUser.Add(new SelectListItem() { Text = "IT Coordinator", Value = "IT Coordinator" });
+
+}
+
+<h2>Register</h2>
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "registerationForm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>user</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2">Email</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.u_email, new { htmlAttributes = new { @class = "form-control", @id = "email" } })
+            @Html.ValidationMessageFor(model => model.u_email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Password</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.u_pass, new { htmlAttributes = new { @class = "form-control", @id = "pwd", @oninput = "return checkProgress()" } })
+            @Html.ValidationMessageFor(model => model.u_pass, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10" style="float:right">
+            <div class="progress progress-striped active" style="width:278px">
+                <div class="progress-bar" style="width: 0%" id="pwdProg"></div>
+            </div>
+        </div>
+    </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Conferm Password</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.u_pass, new { htmlAttributes = new { @class = "form-control", @id = "cpwd" } })
+                @Html.ValidationMessageFor(model => model.u_pass, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Type</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.u_type, TypeOfUser, "Select Type", new { @class = "form-control", @id = "typ" })
+                @Html.ValidationMessageFor(model => model.u_type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Register" class="btn btn-success" onclick="return validateForm()" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+
+        function validateForm(email) {
+
+            //var x = document.forms["myForm"]["fname"].value;
+            var email = document.forms["registerationForm"]["email"].value;
+            var pwd = document.forms["registerationForm"]["pwd"].value;
+            var cpwd = document.forms["registerationForm"]["cpwd"].value;
+            var ty = document.forms["registerationForm"]["typ"].value;
+            //alert(email);
+            //return false;
+
+            if (email == "") {
+                alert('Email is required')
+                return false;
+            }
+            else if (pwd == "") {
+                alert("Password is required")
+                return false;
+            }
+            else if (cpwd == "") {
+                alert("c Password is required");
+                return false;
+            }
+            else if (ty == "") {
+                alert("Type is required");
+                return false;
+            }
+            else if (pwd != cpwd) {
+                alert("Passwords Don't Match");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        //document.getElementById('div_register').setAttribute("style","width:500px");
+        var progressBar = document.getElementById('pwdProg');
+        
+        function checkProgress() {
+
+            var pwd = document.forms["registerationForm"]["pwd"].value;
+
+            if (pwd.length > 0) {
+                progressBar.style.width = "0%";
+                if (pwd.length > 5) {
+                    progressBar.style.width = "20%";
+                    if (pwd.length > 10) {
+                        progressBar.style.width = "40%";
+                        if (pwd.length > 15) {
+                            progressBar.style.width = "60%";
+                            if (pwd.length > 20) {
+                                progressBar.style.width = "100%";
+                            }
+                        }
+                    }
+                }
+               
+            }
+            
+            //alert(progressBar.getAttribute('class'));
+        }
+    </script>
+}

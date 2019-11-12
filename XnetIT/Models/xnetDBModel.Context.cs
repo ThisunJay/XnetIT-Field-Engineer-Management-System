@@ -26,5 +26,7 @@ namespace XnetIT.Models
         }
     
         public virtual DbSet<engineer> engineers { get; set; }
+        public virtual DbSet<job> jobs { get; set; }
+        public virtual DbSet<user> users { get; set; }
     }
 }
