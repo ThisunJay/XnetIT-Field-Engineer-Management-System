@@ -61,13 +61,41 @@
                 </dd>
 
                 <dt>
+                    Job Status
+                </dt>
+
+                <dd>
+                    @*@Html.DisplayFor(modelItem => item.j_status)*@
+                    @{
+                        string stat = item.j_status;
+                        if (stat == "Searching")
+                        {
+                            <h3 style="color: red">Searching</h3>
+                        }
+                        else if (stat == "Started")
+                        {
+                            <h3 style="color: yellow">Started</h3>
+                        }
+                        else if (stat == "Delayed")
+                        {
+                            <h3 style="color: orange">Delayed</h3>
+                        }
+                        else if (stat == "Completed")
+                        {
+                            <h3 style="color: green">Completed</h3>
+                        }
+                    }
+                </dd>
+
+                <dt>
                     Options
                 </dt>
 
                 <dd>
                     @Html.ActionLink("Edit", "Edit", new { id = item.job_id }) |
-                    @Html.ActionLink("Remove", "Delete", new { id = item.job_id })
-                </dd>
+                    @Html.ActionLink("Remove", "Delete", new { id = item.job_id }) |
+                @*@Html.ActionLink("Engineer", "../Engineers/Index", new { id = item.job_id })*@
+                    </dd>
 
             </dl>
 

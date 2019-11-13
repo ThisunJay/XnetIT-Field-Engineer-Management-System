@@ -11,10 +11,13 @@
     {
         @*<p><button class="btn btn-primary btn-lg">Login</button></p>*@
         <input type="button" class="btn btn-primary btn-lg" value="Login" onclick="location.href='@Url.Action("Login", "Home")'" />
+        <input type="button" class="btn btn-primary btn-lg" value="Register" onclick="location.href='@Url.Action("Register", "Home")'" />
     }
     else
     {
         <input type="button" class="btn btn-primary btn-lg" value="Logout" onclick="location.href='@Url.Action("Logout", "Home")'" />
+        
+        @*<h1>@HttpContext.Current.Session["UserName"]</h1>*@
     }
 </div>
 

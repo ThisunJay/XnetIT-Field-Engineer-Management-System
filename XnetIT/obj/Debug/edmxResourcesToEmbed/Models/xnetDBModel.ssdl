@@ -22,6 +22,7 @@
     <Property Name="j_date" Type="date" />
     <Property Name="j_time" Type="time" Precision="7" />
     <Property Name="site_contact" Type="varchar" MaxLength="20" />
+    <Property Name="j_status" Type="varchar" MaxLength="40" />
   </EntityType>
   <EntityType Name="users">
     <Key>

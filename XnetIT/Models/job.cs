@@ -20,5 +20,6 @@ namespace XnetIT.Models
         public Nullable<System.DateTime> j_date { get; set; }
         public Nullable<System.TimeSpan> j_time { get; set; }
         public string site_contact { get; set; }
+        public string j_status { get; set; }
     }
 }

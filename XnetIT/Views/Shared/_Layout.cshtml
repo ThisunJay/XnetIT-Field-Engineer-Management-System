@@ -23,6 +23,14 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (HttpContext.Current.Session["UserID"] != null)
+                    {
+
+                        @*<li>Hello, @HttpContext.Current.Session["UserName"]</li>*@
+                        string hello = "Hello, " + @HttpContext.Current.Session["UserName"];
+                        <li>@Html.ActionLink(hello, "Index", "Home")</li>
+                        <li style="float:right; margin-left: 500px">@Html.ActionLink("Logout", "Logout", "Home")</li>
+                    }
                 </ul>
             </div>
         </div>

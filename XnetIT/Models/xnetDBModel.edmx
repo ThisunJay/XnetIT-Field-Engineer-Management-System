@@ -27,6 +27,7 @@
           <Property Name="j_date" Type="date" />
           <Property Name="j_time" Type="time" Precision="7" />
           <Property Name="site_contact" Type="varchar" MaxLength="20" />
+          <Property Name="j_status" Type="varchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -73,6 +74,7 @@
           <Property Name="j_date" Type="DateTime" Precision="0" />
           <Property Name="j_time" Type="Time" Precision="7" />
           <Property Name="site_contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="j_status" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -105,6 +107,7 @@
           <EntitySetMapping Name="jobs">
             <EntityTypeMapping TypeName="xnetModel.job">
               <MappingFragment StoreEntitySet="job">
+                <ScalarProperty Name="j_status" ColumnName="j_status" />
                 <ScalarProperty Name="site_contact" ColumnName="site_contact" />
                 <ScalarProperty Name="j_time" ColumnName="j_time" />
                 <ScalarProperty Name="j_date" ColumnName="j_date" />

@@ -8,38 +8,71 @@
 <h2>Login</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "loginForm", id = "frm" })) 
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>user</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.u_email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.u_email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.u_email, "", new { @class = "text-danger" })
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+
+        <div class="form-horizontal">
+            <h4>Login</h4>
+
+            <img src="~/img/loginicon.png" style="height: 200px; width: 200px; margin-left:80px; margin-right: auto" />
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.u_email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.u_email, new { htmlAttributes = new { @class = "form-control", @id = "email", @placeholder = "Email", @type = "email", @style = "margin-left: 40px" } })
+                    @Html.ValidationMessageFor(model => model.u_email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.u_pass, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.u_pass, new { htmlAttributes = new { @class = "form-control", @id = "pwd", @placeholder = "Password", @type = "password", @style = "margin-left: 40px" } })
+                    @Html.ValidationMessageFor(model => model.u_pass, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Login" class="btn btn-success" onclick="return loginValidation()" style="margin-left: 80px" />
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.u_pass, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.u_pass, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.u_pass, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
     </div>
+    <div class="col-sm-4"></div>
+</div>
+    
 }
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+
+    <script>
+
+        function loginValidation() {
+            var email = document.forms["loginForm"]["email"].value;
+            var pwd = document.forms["loginForm"]["pwd"].value;
+
+            if (email == "") {
+                alert("Email is required!");
+                return false;
+            }
+            else if (pwd == "") {
+                alert("Password is required");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        
+    </script>
+
 }

@@ -17,6 +17,7 @@
     <EntitySetMapping Name="jobs">
       <EntityTypeMapping TypeName="xnetModel.job">
         <MappingFragment StoreEntitySet="job">
+          <ScalarProperty Name="j_status" ColumnName="j_status" />
           <ScalarProperty Name="site_contact" ColumnName="site_contact" />
           <ScalarProperty Name="j_time" ColumnName="j_time" />
           <ScalarProperty Name="j_date" ColumnName="j_date" />
