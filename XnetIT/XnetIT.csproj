@@ -140,6 +140,9 @@
     <Compile Include="Models\job.cs">
       <DependentUpon>xnetDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\job_ratings.cs">
+      <DependentUpon>xnetDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\user.cs">
       <DependentUpon>xnetDBModel.tt</DependentUpon>
     </Compile>
@@ -228,8 +231,11 @@
     <Content Include="Views\Jobs\Delete.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Jobs\RateJob.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

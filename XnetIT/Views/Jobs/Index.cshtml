@@ -83,6 +83,8 @@
                         else if (stat == "Completed")
                         {
                             <h3 style="color: green">Completed</h3>
+
+                            @Html.ActionLink("Rate Work", "RateJob", new { jobId = item.job_id });
                         }
                     }
                 </dd>
@@ -92,7 +94,7 @@
                 </dt>
 
                 <dd>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.job_id }) |
+                    @Html.ActionLink("Change Job Status", "Edit", new { id = item.job_id }) |
                     @Html.ActionLink("Remove", "Delete", new { id = item.job_id }) |
                 @*@Html.ActionLink("Engineer", "../Engineers/Index", new { id = item.job_id })*@
                     </dd>

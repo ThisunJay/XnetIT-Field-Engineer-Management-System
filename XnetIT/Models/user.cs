@@ -14,9 +14,18 @@ namespace XnetIT.Models
     
     public partial class user
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public user()
+        {
+            this.job_ratings = new HashSet<job_ratings>();
+        }
+    
         public int u_id { get; set; }
         public string u_email { get; set; }
         public string u_pass { get; set; }
         public string u_type { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<job_ratings> job_ratings { get; set; }
     }
 }

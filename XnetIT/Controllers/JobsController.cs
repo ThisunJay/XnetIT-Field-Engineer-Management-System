@@ -75,6 +75,10 @@ namespace XnetIT.Controllers
                 if (!ModelState.IsValid)
                     return View(originalJob);
 
+                if (toEdit.j_date is null) {
+                    toEdit.j_date = DateTime.Now;
+                }
+
                 db.Entry(originalJob).CurrentValues.SetValues(toEdit);
                 db.SaveChanges();
 
@@ -118,6 +122,31 @@ namespace XnetIT.Controllers
             }
         }
 
+        //Get
+        public ActionResult RateJob()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult RateJob([Bind(Exclude = "r_id")] job_ratings jobToRate) {
+
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                var userID = Session["UserId"];
+                //jobToRate.u_id = (int) userID;
+                jobToRate.date_and_time = DateTime.Now;
+                //jobToRate.j_id = Request.QueryString["parameter1"];
+                db.job_ratings.Add(jobToRate);
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Jobs");
+            }
+
+        }
     }
 }

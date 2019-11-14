@@ -24,6 +24,16 @@
     <Property Name="site_contact" Type="varchar" MaxLength="20" />
     <Property Name="j_status" Type="varchar" MaxLength="40" />
   </EntityType>
+  <EntityType Name="job_ratings">
+    <Key>
+      <PropertyRef Name="r_id" />
+    </Key>
+    <Property Name="r_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="u_id" Type="int" />
+    <Property Name="j_id" Type="int" />
+    <Property Name="rating" Type="int" />
+    <Property Name="date_and_time" Type="datetime" />
+  </EntityType>
   <EntityType Name="users">
     <Key>
       <PropertyRef Name="u_id" />
@@ -33,9 +43,42 @@
     <Property Name="u_pass" Type="varchar" MaxLength="100" />
     <Property Name="u_type" Type="varchar" MaxLength="20" />
   </EntityType>
+  <Association Name="FK__job_rating__j_id__70DDC3D8">
+    <End Role="job" Type="Self.job" Multiplicity="0..1" />
+    <End Role="job_ratings" Type="Self.job_ratings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="job">
+        <PropertyRef Name="job_id" />
+      </Principal>
+      <Dependent Role="job_ratings">
+        <PropertyRef Name="j_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__job_rating__u_id__6FE99F9F">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="job_ratings" Type="Self.job_ratings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="job_ratings">
+        <PropertyRef Name="u_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="xnetModelStoreContainer">
     <EntitySet Name="engineer" EntityType="Self.engineer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="job" EntityType="Self.job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="job_ratings" EntityType="Self.job_ratings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__job_rating__j_id__70DDC3D8" Association="Self.FK__job_rating__j_id__70DDC3D8">
+      <End Role="job" EntitySet="job" />
+      <End Role="job_ratings" EntitySet="job_ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__job_rating__u_id__6FE99F9F" Association="Self.FK__job_rating__u_id__6FE99F9F">
+      <End Role="users" EntitySet="users" />
+      <End Role="job_ratings" EntitySet="job_ratings" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

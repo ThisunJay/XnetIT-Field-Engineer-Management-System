@@ -37,5 +37,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="job_ratings">
+      <EntityTypeMapping TypeName="xnetModel.job_ratings">
+        <MappingFragment StoreEntitySet="job_ratings">
+          <ScalarProperty Name="date_and_time" ColumnName="date_and_time" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="j_id" ColumnName="j_id" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="r_id" ColumnName="r_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

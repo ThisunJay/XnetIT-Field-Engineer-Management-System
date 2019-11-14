@@ -8,6 +8,9 @@
         <EntityTypeShape EntityType="xnetModel.engineer" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="xnetModel.job" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="xnetModel.user" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="xnetModel.job_ratings" Width="1.5" PointX="5.625" PointY="2" />
+        <AssociationConnector Association="xnetModel.FK__job_rating__j_id__70DDC3D8" />
+        <AssociationConnector Association="xnetModel.FK__job_rating__u_id__6FE99F9F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

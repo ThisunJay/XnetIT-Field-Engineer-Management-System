@@ -14,6 +14,12 @@ namespace XnetIT.Models
     
     public partial class job
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public job()
+        {
+            this.job_ratings = new HashSet<job_ratings>();
+        }
+    
         public int job_id { get; set; }
         public string title { get; set; }
         public string j_address { get; set; }
@@ -21,5 +27,8 @@ namespace XnetIT.Models
         public Nullable<System.TimeSpan> j_time { get; set; }
         public string site_contact { get; set; }
         public string j_status { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<job_ratings> job_ratings { get; set; }
     }
 }

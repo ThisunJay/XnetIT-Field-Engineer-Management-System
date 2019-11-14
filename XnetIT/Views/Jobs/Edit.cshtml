@@ -5,13 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+@{
+    List<SelectListItem> jobStatus = new List<SelectListItem>();
+    jobStatus.Add(new SelectListItem() { Text = "Started", Value = "Started" });
+    jobStatus.Add(new SelectListItem() { Text = "Delayed", Value = "Delayed" });
+    jobStatus.Add(new SelectListItem() { Text = "Completed", Value = "Completed" });
+}
+
+<h2>Edit / Change Job Status</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>job</h4>
         <hr />
@@ -37,7 +44,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Date</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.j_date, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.EditorFor(model => model.j_date, new { htmlAttributes = new { @class = "form-control", type = "date", @id = "dateOfJob" } })
                 @Html.ValidationMessageFor(model => model.j_date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -45,7 +52,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Time</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.j_time, new { htmlAttributes = new { @class = "form-control", type = "time" } })
+                @Html.EditorFor(model => model.j_time, new { htmlAttributes = new { @class = "form-control", type = "time", @value = DateTime.Now.ToString("hh:mm tt") } })
                 @Html.ValidationMessageFor(model => model.j_time, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -55,6 +62,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.site_contact, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.site_contact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Job Status</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.j_status, jobStatus, "Change Job State", new { @class = "form-control", @id = "jobstatus" })
+                @Html.ValidationMessageFor(model => model.j_status, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -71,5 +86,21 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+
+    <script>
+
+        function checkDateAttribute() {
+            var dateOfJob = document.getElementById("dateOfJob");
+
+            if (dateOfJob.value == null) {
+                dateOfJob.value = Date();
+                return true;
+            }
+            else {
+                return true;
+            }
+        }
+
+    </script>
 }
