@@ -77,4 +77,3 @@ D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.dll
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.SqlServer.dll
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.xml
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.SqlServer.xml
-D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.csprojAssemblyReference.cache

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<XnetIT.ViewModels.JobAndRatingsViewModel>
+
+@{
+    ViewBag.Title = "ViewJobsWithRatings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewJobsWithRatings</h2>
+
+@foreach (var item in Model) {
+    <h2>item.</h2>
+}
+

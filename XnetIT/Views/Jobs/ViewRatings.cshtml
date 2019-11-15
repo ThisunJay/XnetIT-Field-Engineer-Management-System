@@ -1,0 +1,63 @@
+﻿@model IEnumerable<XnetIT.Models.job_ratings>
+
+@{
+    ViewBag.Title = "ViewRatings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ratings History</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Rate Value
+        </th>
+        <th>
+            Date and Time
+        </th>
+        <th>
+            Job Title
+        </th>
+        <th>
+            User
+        </th>
+    </tr>
+
+
+    @{
+
+        double totalRatings = 0;
+        int counter = 0;
+        int itemID = 0;
+
+        foreach (var item in Model)
+        {
+            itemID = (int) item.j_id;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_and_time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.job.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.user.u_email)
+                </td>
+            </tr>
+
+            totalRatings += (int)item.rating;
+            counter++;
+        }
+
+    }
+</table>
+
+@{
+    double avgRatings = totalRatings / counter;
+    <h3> Job Rating = @avgRatings </h3>
+}
+
+<h4>Rate Feild Engineer | </h4> @Html.ActionLink("Rate Field Engineer", "RateEngineer", new { jobId = itemID, userId = @HttpContext.Current.Session["UserID"] })

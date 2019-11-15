@@ -137,6 +137,9 @@
     <Compile Include="Models\engineer.cs">
       <DependentUpon>xnetDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\eng_ratings.cs">
+      <DependentUpon>xnetDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\job.cs">
       <DependentUpon>xnetDBModel.tt</DependentUpon>
     </Compile>
@@ -162,6 +165,7 @@
       <DependentUpon>xnetDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\JobAndRatingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\xnetDB.mdf" />
@@ -232,10 +236,12 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Jobs\RateJob.cshtml" />
+    <Content Include="Views\Jobs\ViewJobsWithRatings.cshtml" />
+    <Content Include="Views\Jobs\_ReviewsPartial.cshtml" />
+    <Content Include="Views\Jobs\ViewRatings.cshtml" />
+    <Content Include="Views\Jobs\RateEngineer.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

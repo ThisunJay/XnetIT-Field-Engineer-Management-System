@@ -1,0 +1,15 @@
+﻿@model IEnumerable<XnetIT.Models.job_ratings>
+
+@{
+    int totalRatings = 0;
+
+    foreach (var item in Model) {
+        totalRatings += (int)item.rating;
+    }
+
+    double avg = totalRatings / Model.Count();
+
+}
+
+<h3>@avg</h3>
+

@@ -48,5 +48,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="eng_ratings">
+      <EntityTypeMapping TypeName="xnetModel.eng_ratings">
+        <MappingFragment StoreEntitySet="eng_ratings">
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="j_id" ColumnName="j_id" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="ra_id" ColumnName="ra_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

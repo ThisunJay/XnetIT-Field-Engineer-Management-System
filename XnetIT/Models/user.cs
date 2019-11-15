@@ -18,6 +18,7 @@ namespace XnetIT.Models
         public user()
         {
             this.job_ratings = new HashSet<job_ratings>();
+            this.eng_ratings = new HashSet<eng_ratings>();
         }
     
         public int u_id { get; set; }
@@ -27,5 +28,7 @@ namespace XnetIT.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<job_ratings> job_ratings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<eng_ratings> eng_ratings { get; set; }
     }
 }

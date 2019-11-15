@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using XnetIT.Models;
+using XnetIT.ViewModels;
 
 namespace XnetIT.Controllers
 {
@@ -147,6 +148,65 @@ namespace XnetIT.Controllers
                 return RedirectToAction("Index", "Jobs");
             }
 
+        }
+
+        public ActionResult ViewJobsWithRatings()
+        {
+            var jobsList = (from job in db.jobs select job).ToList();
+            var ratingsList = (from rat in db.job_ratings select rat).ToList();
+
+            var jobAndRatings = new JobAndRatingsViewModel();
+            jobAndRatings.Jobs = jobsList;
+            jobAndRatings.Ratings = ratingsList;
+
+            return View(jobAndRatings);
+        }
+
+        public ActionResult RatingsView(int id)
+        {
+            // fetch reviews for `id`
+            var reviews = (from rate in db.job_ratings where rate.j_id == id select rate).ToList();
+
+            if (Request.IsAjaxRequest())
+            {
+                // return partial for AJAX requests
+                return PartialView("_ReviewsPartial", reviews);
+            }
+            else
+            {
+                // return full view for regular requests
+                return PartialView("_ReviewsPartial");
+            }
+        }
+
+        public ActionResult ViewRatings(int id)
+        {
+            var rat = (from rati in db.job_ratings where rati.j_id == id select rati).ToList();
+            return View(rat);
+        }
+
+        public ActionResult RateEngineer()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RateEngineer([Bind(Exclude = "ra_id")]eng_ratings rateEng)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return View();
+
+                db.eng_ratings.Add(rateEng);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Engineers");
+
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

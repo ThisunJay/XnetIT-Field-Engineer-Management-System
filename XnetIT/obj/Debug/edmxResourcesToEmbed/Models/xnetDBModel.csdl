@@ -13,6 +13,15 @@
       <End Role="user" EntitySet="users" />
       <End Role="job_ratings" EntitySet="job_ratings" />
     </AssociationSet>
+    <EntitySet Name="eng_ratings" EntityType="xnetModel.eng_ratings" />
+    <AssociationSet Name="FK__eng_rating__j_id__05D8E0BE" Association="xnetModel.FK__eng_rating__j_id__05D8E0BE">
+      <End Role="job" EntitySet="jobs" />
+      <End Role="eng_ratings" EntitySet="eng_ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__eng_rating__u_id__04E4BC85" Association="xnetModel.FK__eng_rating__u_id__04E4BC85">
+      <End Role="user" EntitySet="users" />
+      <End Role="eng_ratings" EntitySet="eng_ratings" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="engineer">
     <Key>
@@ -38,6 +47,7 @@
     <Property Name="site_contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="j_status" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="job_ratings" Relationship="xnetModel.FK__job_rating__j_id__70DDC3D8" FromRole="job" ToRole="job_ratings" />
+    <NavigationProperty Name="eng_ratings" Relationship="xnetModel.FK__eng_rating__j_id__05D8E0BE" FromRole="job" ToRole="eng_ratings" />
   </EntityType>
   <EntityType Name="user">
     <Key>
@@ -48,6 +58,7 @@
     <Property Name="u_pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="u_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="job_ratings" Relationship="xnetModel.FK__job_rating__u_id__6FE99F9F" FromRole="user" ToRole="job_ratings" />
+    <NavigationProperty Name="eng_ratings" Relationship="xnetModel.FK__eng_rating__u_id__04E4BC85" FromRole="user" ToRole="eng_ratings" />
   </EntityType>
   <EntityType Name="job_ratings">
     <Key>
@@ -81,6 +92,45 @@
         <PropertyRef Name="u_id" />
       </Principal>
       <Dependent Role="job_ratings">
+        <PropertyRef Name="u_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="eng_ratings">
+    <Key>
+      <PropertyRef Name="ra_id" />
+    </Key>
+    <Property Name="ra_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="u_id" Type="Int32" />
+    <Property Name="j_id" Type="Int32" />
+    <Property Name="rating" Type="Int32" />
+    <NavigationProperty Name="job" Relationship="xnetModel.FK__eng_rating__j_id__05D8E0BE" FromRole="eng_ratings" ToRole="job" />
+    <NavigationProperty Name="user" Relationship="xnetModel.FK__eng_rating__u_id__04E4BC85" FromRole="eng_ratings" ToRole="user" />
+  </EntityType>
+  <Association Name="FK__eng_rating__j_id__05D8E0BE">
+    <End Type="xnetModel.job" Role="job" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="xnetModel.eng_ratings" Role="eng_ratings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="job">
+        <PropertyRef Name="job_id" />
+      </Principal>
+      <Dependent Role="eng_ratings">
+        <PropertyRef Name="j_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__eng_rating__u_id__04E4BC85">
+    <End Type="xnetModel.user" Role="user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="xnetModel.eng_ratings" Role="eng_ratings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="eng_ratings">
         <PropertyRef Name="u_id" />
       </Dependent>
     </ReferentialConstraint>

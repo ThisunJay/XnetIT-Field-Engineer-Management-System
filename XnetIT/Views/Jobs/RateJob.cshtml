@@ -3,7 +3,16 @@
 @{
     ViewBag.Title = "RateJob";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<SelectListItem> rating = new List<SelectListItem>();
+    rating.Add(new SelectListItem() { Text = "1", Value = "1" });
+    rating.Add(new SelectListItem() { Text = "2", Value = "2" });
+    rating.Add(new SelectListItem() { Text = "3", Value = "3" });
+    rating.Add(new SelectListItem() { Text = "4", Value = "4" });
+    rating.Add(new SelectListItem() { Text = "5", Value = "5" });
 }
+
+
 
 <h2>RateJob</h2>
 
@@ -41,7 +50,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.rating, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.rating, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.rating, rating, "Rate work from 1 to 5", new { @class = "form-control", @id = "ratinOfWork" })
                 @Html.ValidationMessageFor(model => model.rating, "", new { @class = "text-danger" })
             </div>
         </div>

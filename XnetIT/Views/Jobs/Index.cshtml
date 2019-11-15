@@ -85,6 +85,8 @@
                             <h3 style="color: green">Completed</h3>
 
                             @Html.ActionLink("Rate Work", "RateJob", new { jobId = item.job_id });
+                            @Html.ActionLink("View Ratings", "ViewRatings", new { id = item.job_id }, new { @class = "GetReviewsLink", data_id = item.job_id })
+                            <div id="SomeDiv"></div>
                         }
                     }
                 </dd>
@@ -109,3 +111,17 @@
     </div>
     <hr />
 }
+
+@*<script>
+
+    $(document).ready(function () {
+    $('.GetReviewsLink').on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            $.get('@Url.Action("RatingsView")', { id: id }, function (result) {
+                $('#SomeDiv').html(result);
+            });
+        });
+    });
+
+</script>*@
