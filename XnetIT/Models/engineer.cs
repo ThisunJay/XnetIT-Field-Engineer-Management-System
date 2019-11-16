@@ -18,6 +18,7 @@ namespace XnetIT.Models
         public engineer()
         {
             this.assign_engineer = new HashSet<assign_engineer>();
+            this.eng_ratings = new HashSet<eng_ratings>();
         }
     
         public int e_id { get; set; }
@@ -30,5 +31,7 @@ namespace XnetIT.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<assign_engineer> assign_engineer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<eng_ratings> eng_ratings { get; set; }
     }
 }

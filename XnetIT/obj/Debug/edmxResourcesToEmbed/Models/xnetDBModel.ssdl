@@ -16,7 +16,7 @@
     </Key>
     <Property Name="ra_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="u_id" Type="int" />
-    <Property Name="j_id" Type="int" />
+    <Property Name="e_id" Type="int" />
     <Property Name="rating" Type="int" />
   </EntityType>
   <EntityType Name="engineer">
@@ -90,21 +90,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__eng_rating__j_id__05D8E0BE">
-    <End Role="job" Type="Self.job" Multiplicity="0..1">
+  <Association Name="FK__eng_rating__e_id__2A164134">
+    <End Role="engineer" Type="Self.engineer" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="eng_ratings" Type="Self.eng_ratings" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="job">
-        <PropertyRef Name="job_id" />
+      <Principal Role="engineer">
+        <PropertyRef Name="e_id" />
       </Principal>
       <Dependent Role="eng_ratings">
-        <PropertyRef Name="j_id" />
+        <PropertyRef Name="e_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__eng_rating__u_id__04E4BC85">
+  <Association Name="FK__eng_rating__u_id__29221CFB">
     <End Role="users" Type="Self.users" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -161,11 +161,11 @@
       <End Role="job" EntitySet="job" />
       <End Role="assign_engineer" EntitySet="assign_engineer" />
     </AssociationSet>
-    <AssociationSet Name="FK__eng_rating__j_id__05D8E0BE" Association="Self.FK__eng_rating__j_id__05D8E0BE">
-      <End Role="job" EntitySet="job" />
+    <AssociationSet Name="FK__eng_rating__e_id__2A164134" Association="Self.FK__eng_rating__e_id__2A164134">
+      <End Role="engineer" EntitySet="engineer" />
       <End Role="eng_ratings" EntitySet="eng_ratings" />
     </AssociationSet>
-    <AssociationSet Name="FK__eng_rating__u_id__04E4BC85" Association="Self.FK__eng_rating__u_id__04E4BC85">
+    <AssociationSet Name="FK__eng_rating__u_id__29221CFB" Association="Self.FK__eng_rating__u_id__29221CFB">
       <End Role="users" EntitySet="users" />
       <End Role="eng_ratings" EntitySet="eng_ratings" />
     </AssociationSet>

@@ -16,10 +16,10 @@ namespace XnetIT.Models
     {
         public int ra_id { get; set; }
         public Nullable<int> u_id { get; set; }
-        public Nullable<int> j_id { get; set; }
+        public Nullable<int> e_id { get; set; }
         public Nullable<int> rating { get; set; }
     
-        public virtual job job { get; set; }
+        public virtual engineer engineer { get; set; }
         public virtual user user { get; set; }
     }
 }

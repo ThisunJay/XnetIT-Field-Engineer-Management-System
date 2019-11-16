@@ -18,7 +18,6 @@ namespace XnetIT.Models
         public job()
         {
             this.job_ratings = new HashSet<job_ratings>();
-            this.eng_ratings = new HashSet<eng_ratings>();
             this.assign_engineer = new HashSet<assign_engineer>();
         }
     
@@ -32,8 +31,6 @@ namespace XnetIT.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<job_ratings> job_ratings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<eng_ratings> eng_ratings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<assign_engineer> assign_engineer { get; set; }
     }

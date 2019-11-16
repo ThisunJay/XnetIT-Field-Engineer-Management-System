@@ -67,7 +67,10 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.e_id }) |
                 @*@Html.ActionLink("Details", "Details", new { id = item.e_id }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.e_id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.e_id }) |
+
+                @Html.ActionLink("Rate Engineer", "RateEngineer", new { e_id = item.e_id, userId = HttpContext.Current.Session["UserID"].ToString() 
+                })
             </td>
         </tr>
     }

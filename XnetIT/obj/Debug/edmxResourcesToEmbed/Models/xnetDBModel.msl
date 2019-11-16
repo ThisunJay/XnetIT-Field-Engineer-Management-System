@@ -48,16 +48,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="eng_ratings">
-      <EntityTypeMapping TypeName="xnetModel.eng_ratings">
-        <MappingFragment StoreEntitySet="eng_ratings">
-          <ScalarProperty Name="rating" ColumnName="rating" />
-          <ScalarProperty Name="j_id" ColumnName="j_id" />
-          <ScalarProperty Name="u_id" ColumnName="u_id" />
-          <ScalarProperty Name="ra_id" ColumnName="ra_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="assign_engineer">
       <EntityTypeMapping TypeName="xnetModel.assign_engineer">
         <MappingFragment StoreEntitySet="assign_engineer">
@@ -66,6 +56,16 @@
           <ScalarProperty Name="job_id" ColumnName="job_id" />
           <ScalarProperty Name="eng_id" ColumnName="eng_id" />
           <ScalarProperty Name="a_id" ColumnName="a_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eng_ratings">
+      <EntityTypeMapping TypeName="xnetModel.eng_ratings">
+        <MappingFragment StoreEntitySet="eng_ratings">
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="e_id" ColumnName="e_id" />
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="ra_id" ColumnName="ra_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -244,6 +244,7 @@
     <Content Include="Views\Jobs\ViewRatings.cshtml" />
     <Content Include="Views\Jobs\RateEngineer.cshtml" />
     <Content Include="Views\Jobs\AssignEngineer.cshtml" />
+    <Content Include="Views\Engineers\RateEngineer.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

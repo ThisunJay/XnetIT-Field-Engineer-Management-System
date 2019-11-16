@@ -115,6 +115,30 @@ namespace XnetIT.Controllers
             }
         }
 
+        public ActionResult RateEngineer()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RateEngineer([Bind(Exclude = "ra_id")]eng_ratings rateEng)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return View();
+
+                db.eng_ratings.Add(rateEng);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Engineers");
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         public ActionResult ViewRatings(int id)
         {
             //var engRatings = from eng in db.eng_ratings where eng.u_id
