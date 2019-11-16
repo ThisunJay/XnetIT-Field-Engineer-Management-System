@@ -14,6 +14,12 @@ namespace XnetIT.Models
     
     public partial class engineer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public engineer()
+        {
+            this.assign_engineer = new HashSet<assign_engineer>();
+        }
+    
         public int e_id { get; set; }
         public string e_name { get; set; }
         public string gov_id { get; set; }
@@ -21,5 +27,8 @@ namespace XnetIT.Models
         public string email { get; set; }
         public string e_address { get; set; }
         public string skills { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<assign_engineer> assign_engineer { get; set; }
     }
 }

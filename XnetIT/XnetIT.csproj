@@ -134,6 +134,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\assign_engineer.cs">
+      <DependentUpon>xnetDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\engineer.cs">
       <DependentUpon>xnetDBModel.tt</DependentUpon>
     </Compile>
@@ -240,6 +243,7 @@
     <Content Include="Views\Jobs\_ReviewsPartial.cshtml" />
     <Content Include="Views\Jobs\ViewRatings.cshtml" />
     <Content Include="Views\Jobs\RateEngineer.cshtml" />
+    <Content Include="Views\Jobs\AssignEngineer.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

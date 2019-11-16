@@ -71,6 +71,8 @@
                         if (stat == "Searching")
                         {
                             <h3 style="color: red">Searching</h3>
+
+                            @Html.ActionLink("Assign an Engineer", "AssignEngineer", new { jobId = item.job_id })
                         }
                         else if (stat == "Started")
                         {
@@ -84,9 +86,14 @@
                         {
                             <h3 style="color: green">Completed</h3>
 
-                            @Html.ActionLink("Rate Work", "RateJob", new { jobId = item.job_id });
+                            @Html.ActionLink("Rate Work", "RateJob", new { jobId = item.job_id })
+                            <text> | </text>
                             @Html.ActionLink("View Ratings", "ViewRatings", new { id = item.job_id }, new { @class = "GetReviewsLink", data_id = item.job_id })
-                            <div id="SomeDiv"></div>
+                            @*< div id = "SomeDiv" ></ div >*@
+                        }
+                        else
+                        {
+                            <h3 style="color: blue">Engineer Assigned</h3>
                         }
                     }
                 </dd>
@@ -97,7 +104,7 @@
 
                 <dd>
                     @Html.ActionLink("Change Job Status", "Edit", new { id = item.job_id }) |
-                    @Html.ActionLink("Remove", "Delete", new { id = item.job_id }) |
+                    @Html.ActionLink("Remove", "Delete", new { id = item.job_id }) 
                 @*@Html.ActionLink("Engineer", "../Engineers/Index", new { id = item.job_id })*@
                     </dd>
 

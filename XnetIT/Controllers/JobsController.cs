@@ -208,5 +208,47 @@ namespace XnetIT.Controllers
                 return View();
             }
         }
+
+        public ActionResult AssignEngineer()
+        {
+            assign_engineer engModel = new assign_engineer();
+
+            engModel.engineerCollection = db.engineers.ToList<engineer>();
+
+            return View(engModel);
+        }
+
+        [HttpPost]
+        public ActionResult AssignEngineer([Bind(Exclude = "a_id")] assign_engineer engToAssign)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return View();
+
+                db.assign_engineer.Add(engToAssign);
+                db.SaveChanges();
+
+                //var job = from j in db.jobs where
+                var job = (from j in db.jobs where j.job_id == engToAssign.job_id select j).First();
+
+                //db.Entry(originalJob).CurrentValues.SetValues(toEdit);
+                //db.SaveChanges();
+
+                //db.Entry(user).Property(x => x.Password).IsModified = true;
+                //db.SaveChanges();
+                job.j_status = "Assigned";
+                db.Entry(job).Property(x => x.j_status).IsModified = true;
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }

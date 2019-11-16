@@ -1,0 +1,79 @@
+﻿@model XnetIT.Models.assign_engineer
+
+@{
+    ViewBag.Title = "AssignEngineer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Assign Engineer</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Assign an Engineer to Work</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Engineer</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.eng_id, new SelectList(Model.engineerCollection, "e_id", "e_name"), "Select an Engineer.", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.eng_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="hideThese">
+            <label class="control-label col-md-2">Job ID</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.job_id, new { htmlAttributes = new { @class = "form-control", @id = "job_id" } })
+                @Html.ValidationMessageFor(model => model.job_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Date</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.assign_date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.assign_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Time</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.assign_time, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
+                @Html.ValidationMessageFor(model => model.assign_time, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Assign" class="btn btn-default" onclick="return setValues()"/>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+
+    <script>
+
+        var hide1 = document.getElementById("hideThese");
+        hide1.style.display = "none";
+        var jId = @Request.QueryString["jobId"];
+
+        function setValues() {
+
+            var jobID = document.getElementById("job_id").value = jId;
+            return true;
+        }
+
+    </script>
+}

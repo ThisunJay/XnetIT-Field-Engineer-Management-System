@@ -58,5 +58,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="assign_engineer">
+      <EntityTypeMapping TypeName="xnetModel.assign_engineer">
+        <MappingFragment StoreEntitySet="assign_engineer">
+          <ScalarProperty Name="assign_time" ColumnName="assign_time" />
+          <ScalarProperty Name="assign_date" ColumnName="assign_date" />
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="eng_id" ColumnName="eng_id" />
+          <ScalarProperty Name="a_id" ColumnName="a_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -5,15 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5e7ccec44235405bb7d4d2a2c909056d" Name="Diagram1" ZoomLevel="85">
-        <EntityTypeShape EntityType="xnetModel.engineer" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="xnetModel.engineer" Width="1.5" PointX="1.375" PointY="0.875" />
         <EntityTypeShape EntityType="xnetModel.job" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="xnetModel.user" Width="1.5" PointX="3.375" PointY="3.75" />
-        <EntityTypeShape EntityType="xnetModel.job_ratings" Width="1.5" PointX="5.625" PointY="2" />
+        <EntityTypeShape EntityType="xnetModel.user" Width="1.5" PointX="2.375" PointY="3.875" />
+        <EntityTypeShape EntityType="xnetModel.job_ratings" Width="1.5" PointX="6.125" PointY="1.625" />
         <AssociationConnector Association="xnetModel.FK__job_rating__j_id__70DDC3D8" />
         <AssociationConnector Association="xnetModel.FK__job_rating__u_id__6FE99F9F" />
-        <EntityTypeShape EntityType="xnetModel.eng_ratings" Width="1.5" PointX="5.625" PointY="5.25" />
+        <EntityTypeShape EntityType="xnetModel.eng_ratings" Width="1.5" PointX="8.375" PointY="3.75" />
         <AssociationConnector Association="xnetModel.FK__eng_rating__j_id__05D8E0BE" />
         <AssociationConnector Association="xnetModel.FK__eng_rating__u_id__04E4BC85" />
+        <EntityTypeShape EntityType="xnetModel.assign_engineer" Width="1.5" PointX="8.25" PointY="0.5" />
+        <AssociationConnector Association="xnetModel.FK__assign_en__eng_i__17F790F9" />
+        <AssociationConnector Association="xnetModel.FK__assign_en__job_i__18EBB532" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

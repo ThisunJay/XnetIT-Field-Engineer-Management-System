@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="xnetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="assign_engineer">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="a_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eng_id" Type="int" />
+          <Property Name="job_id" Type="int" />
+          <Property Name="assign_date" Type="date" />
+          <Property Name="assign_time" Type="time" Precision="7" />
+        </EntityType>
         <EntityType Name="eng_ratings">
           <Key>
             <PropertyRef Name="ra_id" />
@@ -57,6 +67,34 @@
           <Property Name="u_pass" Type="varchar" MaxLength="100" />
           <Property Name="u_type" Type="varchar" MaxLength="20" />
         </EntityType>
+        <Association Name="FK__assign_en__eng_i__17F790F9">
+          <End Role="engineer" Type="Self.engineer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="assign_engineer" Type="Self.assign_engineer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="engineer">
+              <PropertyRef Name="e_id" />
+            </Principal>
+            <Dependent Role="assign_engineer">
+              <PropertyRef Name="eng_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__assign_en__job_i__18EBB532">
+          <End Role="job" Type="Self.job" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="assign_engineer" Type="Self.assign_engineer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="job">
+              <PropertyRef Name="job_id" />
+            </Principal>
+            <Dependent Role="assign_engineer">
+              <PropertyRef Name="job_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__eng_rating__j_id__05D8E0BE">
           <End Role="job" Type="Self.job" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -114,11 +152,20 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="xnetModelStoreContainer">
+          <EntitySet Name="assign_engineer" EntityType="Self.assign_engineer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eng_ratings" EntityType="Self.eng_ratings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="engineer" EntityType="Self.engineer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="job" EntityType="Self.job" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="job_ratings" EntityType="Self.job_ratings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__assign_en__eng_i__17F790F9" Association="Self.FK__assign_en__eng_i__17F790F9">
+            <End Role="engineer" EntitySet="engineer" />
+            <End Role="assign_engineer" EntitySet="assign_engineer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__assign_en__job_i__18EBB532" Association="Self.FK__assign_en__job_i__18EBB532">
+            <End Role="job" EntitySet="job" />
+            <End Role="assign_engineer" EntitySet="assign_engineer" />
+          </AssociationSet>
           <AssociationSet Name="FK__eng_rating__j_id__05D8E0BE" Association="Self.FK__eng_rating__j_id__05D8E0BE">
             <End Role="job" EntitySet="job" />
             <End Role="eng_ratings" EntitySet="eng_ratings" />
@@ -162,6 +209,15 @@
             <End Role="user" EntitySet="users" />
             <End Role="eng_ratings" EntitySet="eng_ratings" />
           </AssociationSet>
+          <EntitySet Name="assign_engineer" EntityType="xnetModel.assign_engineer" />
+          <AssociationSet Name="FK__assign_en__eng_i__17F790F9" Association="xnetModel.FK__assign_en__eng_i__17F790F9">
+            <End Role="engineer" EntitySet="engineers" />
+            <End Role="assign_engineer" EntitySet="assign_engineer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__assign_en__job_i__18EBB532" Association="xnetModel.FK__assign_en__job_i__18EBB532">
+            <End Role="job" EntitySet="jobs" />
+            <End Role="assign_engineer" EntitySet="assign_engineer" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="engineer">
           <Key>
@@ -174,6 +230,7 @@
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="e_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="skills" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="assign_engineer" Relationship="xnetModel.FK__assign_en__eng_i__17F790F9" FromRole="engineer" ToRole="assign_engineer" />
         </EntityType>
         <EntityType Name="job">
           <Key>
@@ -188,6 +245,7 @@
           <Property Name="j_status" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="job_ratings" Relationship="xnetModel.FK__job_rating__j_id__70DDC3D8" FromRole="job" ToRole="job_ratings" />
           <NavigationProperty Name="eng_ratings" Relationship="xnetModel.FK__eng_rating__j_id__05D8E0BE" FromRole="job" ToRole="eng_ratings" />
+          <NavigationProperty Name="assign_engineer" Relationship="xnetModel.FK__assign_en__job_i__18EBB532" FromRole="job" ToRole="assign_engineer" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -275,6 +333,46 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="assign_engineer">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="a_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eng_id" Type="Int32" />
+          <Property Name="job_id" Type="Int32" />
+          <Property Name="assign_date" Type="DateTime" Precision="0" />
+          <Property Name="assign_time" Type="Time" Precision="7" />
+          <NavigationProperty Name="engineer" Relationship="xnetModel.FK__assign_en__eng_i__17F790F9" FromRole="assign_engineer" ToRole="engineer" />
+          <NavigationProperty Name="job" Relationship="xnetModel.FK__assign_en__job_i__18EBB532" FromRole="assign_engineer" ToRole="job" />
+        </EntityType>
+        <Association Name="FK__assign_en__eng_i__17F790F9">
+          <End Type="xnetModel.engineer" Role="engineer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="xnetModel.assign_engineer" Role="assign_engineer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="engineer">
+              <PropertyRef Name="e_id" />
+            </Principal>
+            <Dependent Role="assign_engineer">
+              <PropertyRef Name="eng_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__assign_en__job_i__18EBB532">
+          <End Type="xnetModel.job" Role="job" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="xnetModel.assign_engineer" Role="assign_engineer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="job">
+              <PropertyRef Name="job_id" />
+            </Principal>
+            <Dependent Role="assign_engineer">
+              <PropertyRef Name="job_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -335,6 +433,17 @@
                 <ScalarProperty Name="j_id" ColumnName="j_id" />
                 <ScalarProperty Name="u_id" ColumnName="u_id" />
                 <ScalarProperty Name="ra_id" ColumnName="ra_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assign_engineer">
+            <EntityTypeMapping TypeName="xnetModel.assign_engineer">
+              <MappingFragment StoreEntitySet="assign_engineer">
+                <ScalarProperty Name="assign_time" ColumnName="assign_time" />
+                <ScalarProperty Name="assign_date" ColumnName="assign_date" />
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="eng_id" ColumnName="eng_id" />
+                <ScalarProperty Name="a_id" ColumnName="a_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
