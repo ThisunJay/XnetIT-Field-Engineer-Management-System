@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using XnetIT.Models;
+using XnetIT.ViewModels;
 
 namespace XnetIT.Controllers
 {
@@ -141,9 +142,11 @@ namespace XnetIT.Controllers
 
         public ActionResult ViewRatings(int id)
         {
-            //var engRatings = from eng in db.eng_ratings where eng.u_id
+            EngineerAndRatings EngAndRat = new EngineerAndRatings();
+            EngAndRat.Engineer = (from eng in db.engineers where eng.e_id == id select eng).First();
+            EngAndRat.Ratings = (from rat in db.eng_ratings where rat.e_id == id select rat).ToList();
 
-            return View();
+            return View(EngAndRat);
         }
         
     }
