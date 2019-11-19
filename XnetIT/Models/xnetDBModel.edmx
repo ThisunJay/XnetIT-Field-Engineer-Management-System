@@ -36,6 +36,17 @@
           <Property Name="e_address" Type="varchar" MaxLength="100" />
           <Property Name="skills" Type="varchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="items">
+          <Key>
+            <PropertyRef Name="i_id" />
+          </Key>
+          <Property Name="i_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="i_state" Type="varchar" MaxLength="50" />
+          <Property Name="model_number" Type="varchar" MaxLength="100" />
+          <Property Name="serial_number" Type="varchar" MaxLength="100" />
+          <Property Name="i_availability" Type="varchar" MaxLength="50" />
+          <Property Name="i_status" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="job">
           <Key>
             <PropertyRef Name="job_id" />
@@ -155,6 +166,7 @@
           <EntitySet Name="assign_engineer" EntityType="Self.assign_engineer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eng_ratings" EntityType="Self.eng_ratings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="engineer" EntityType="Self.engineer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="items" EntityType="Self.items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="job" EntityType="Self.job" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="job_ratings" EntityType="Self.job_ratings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
@@ -218,6 +230,7 @@
             <End Role="user" EntitySet="users" />
             <End Role="eng_ratings" EntitySet="eng_ratings" />
           </AssociationSet>
+          <EntitySet Name="items" EntityType="xnetModel.item" />
         </EntityContainer>
         <EntityType Name="engineer">
           <Key>
@@ -373,6 +386,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="item">
+          <Key>
+            <PropertyRef Name="i_id" />
+          </Key>
+          <Property Name="i_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="i_state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="model_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="serial_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="i_availability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="i_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -444,6 +468,18 @@
                 <ScalarProperty Name="e_id" ColumnName="e_id" />
                 <ScalarProperty Name="u_id" ColumnName="u_id" />
                 <ScalarProperty Name="ra_id" ColumnName="ra_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="items">
+            <EntityTypeMapping TypeName="xnetModel.item">
+              <MappingFragment StoreEntitySet="items">
+                <ScalarProperty Name="i_status" ColumnName="i_status" />
+                <ScalarProperty Name="i_availability" ColumnName="i_availability" />
+                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+                <ScalarProperty Name="model_number" ColumnName="model_number" />
+                <ScalarProperty Name="i_state" ColumnName="i_state" />
+                <ScalarProperty Name="i_id" ColumnName="i_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

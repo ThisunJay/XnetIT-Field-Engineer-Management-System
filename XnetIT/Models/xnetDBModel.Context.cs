@@ -31,5 +31,6 @@ namespace XnetIT.Models
         public virtual DbSet<job_ratings> job_ratings { get; set; }
         public virtual DbSet<assign_engineer> assign_engineer { get; set; }
         public virtual DbSet<eng_ratings> eng_ratings { get; set; }
+        public virtual DbSet<item> items { get; set; }
     }
 }

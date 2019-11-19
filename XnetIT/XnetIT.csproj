@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EngineersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -141,6 +142,9 @@
       <DependentUpon>xnetDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\eng_ratings.cs">
+      <DependentUpon>xnetDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\item.cs">
       <DependentUpon>xnetDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\job.cs">
@@ -246,9 +250,11 @@
     <Content Include="Views\Jobs\RateEngineer.cshtml" />
     <Content Include="Views\Jobs\AssignEngineer.cshtml" />
     <Content Include="Views\Engineers\RateEngineer.cshtml" />
+    <Content Include="Views\Engineers\ViewRatings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\EngineerAndRatings\" />
+    <Folder Include="Views\Inventory\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

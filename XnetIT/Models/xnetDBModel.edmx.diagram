@@ -17,6 +17,7 @@
         <EntityTypeShape EntityType="xnetModel.eng_ratings" Width="1.5" PointX="8.25" PointY="3.375" />
         <AssociationConnector Association="xnetModel.FK__eng_rating__e_id__2A164134" />
         <AssociationConnector Association="xnetModel.FK__eng_rating__u_id__29221CFB" />
+        <EntityTypeShape EntityType="xnetModel.item" Width="1.5" PointX="4.875" PointY="4.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

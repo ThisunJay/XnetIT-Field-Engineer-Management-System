@@ -1,0 +1,77 @@
+﻿@model XnetIT.ViewModels.EngineerAndRatings
+
+@{
+    ViewBag.Title = "ViewRatings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    #ratingsTable td {
+        border: solid #1dd1a1;
+        text-align: center
+    }
+
+    #ratingsTable th {
+        border: solid #1dd1a1;
+        text-align: center
+    }
+</style>
+
+
+@{
+    var tot = 0;
+    var avg = 0;
+    var count = 0;
+
+    foreach (var item in Model.Ratings)
+    {
+        tot += (int)item.rating;
+        count++;
+    }
+
+    avg = tot / count;
+
+}
+
+
+<div style="margin: auto;
+  width: 60%;
+  border: 3px solid #1dd1a1;
+  padding: 10px;
+  text-align: center">
+    <h2>@Model.Engineer.e_name</h2>
+
+    <img src="~/img/loginicon.png" style="height: 150px; width: 150px;" />
+
+    <h3>@Model.Engineer.cnumber</h3>
+    <h3>@Model.Engineer.email</h3>
+    <h4>@avg</h4>
+</div>
+
+<table class="table" style="width: 60%; margin: auto; margin-top: 20px" id="ratingsTable">
+
+    <tr>
+        <th>User</th>
+        <th>Rating</th>
+    </tr>
+
+    @{
+        foreach (var item in Model.Ratings)
+        {
+
+            <tr>
+                <td>@item.user.u_email</td>
+                <td>@item.rating</td>
+            </tr>
+        }
+
+        <tr>
+            <td>Overall Rating</td>
+            <td> @avg</td>
+        </tr>
+    }
+
+</table>
+
+
