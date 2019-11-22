@@ -251,10 +251,13 @@
     <Content Include="Views\Jobs\AssignEngineer.cshtml" />
     <Content Include="Views\Engineers\RateEngineer.cshtml" />
     <Content Include="Views\Engineers\ViewRatings.cshtml" />
+    <Content Include="Views\Inventory\Index.cshtml" />
+    <Content Include="Views\Inventory\Create.cshtml" />
+    <Content Include="Views\Inventory\Delete.cshtml" />
+    <Content Include="Views\Inventory\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\EngineerAndRatings\" />
-    <Folder Include="Views\Inventory\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

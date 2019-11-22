@@ -11,7 +11,7 @@ namespace XnetIT.Controllers
         private xnetDBEntities db = new xnetDBEntities();
 
         // GET: Engineers
-        public ActionResult Index(string Search, int? i)
+        public ActionResult Index(string Search, string Address, string Skills, int? i)
         {
             
             var engineers = from eng in db.engineers select eng;
@@ -19,6 +19,14 @@ namespace XnetIT.Controllers
             if (!String.IsNullOrEmpty(Search))
             {
                 engineers = engineers.Where(e => e.e_name.Contains(Search));
+            }
+            else if (!String.IsNullOrEmpty(Address))
+            {
+                engineers = engineers.Where(e => e.e_address.Contains(Address));
+            }
+            else if (!String.IsNullOrEmpty(Skills))
+            {
+                engineers = engineers.Where(e => e.skills.Contains(Skills));
             }
 
             return View(engineers.ToList());

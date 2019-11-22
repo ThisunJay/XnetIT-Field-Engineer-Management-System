@@ -1,0 +1,70 @@
+﻿@model XnetIT.Models.item
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.i_state)*@
+            State
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.i_state)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.model_number)*@
+            Model Number
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.model_number)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.serial_number)*@
+            Serial Number
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serial_number)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.i_availability)*@
+            Availability
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.i_availability)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.i_status)*@
+            Status
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.i_status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

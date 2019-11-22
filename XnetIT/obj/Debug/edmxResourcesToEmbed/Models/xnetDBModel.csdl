@@ -31,6 +31,7 @@
       <End Role="user" EntitySet="users" />
       <End Role="eng_ratings" EntitySet="eng_ratings" />
     </AssociationSet>
+    <EntitySet Name="items" EntityType="xnetModel.item" />
   </EntityContainer>
   <EntityType Name="engineer">
     <Key>
@@ -186,4 +187,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="i_id" />
+    </Key>
+    <Property Name="i_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="i_state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="model_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="serial_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="i_availability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="i_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

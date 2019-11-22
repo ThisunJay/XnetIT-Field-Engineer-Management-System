@@ -69,5 +69,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="items">
+      <EntityTypeMapping TypeName="xnetModel.item">
+        <MappingFragment StoreEntitySet="items">
+          <ScalarProperty Name="i_status" ColumnName="i_status" />
+          <ScalarProperty Name="i_availability" ColumnName="i_availability" />
+          <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+          <ScalarProperty Name="model_number" ColumnName="model_number" />
+          <ScalarProperty Name="i_state" ColumnName="i_state" />
+          <ScalarProperty Name="i_id" ColumnName="i_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

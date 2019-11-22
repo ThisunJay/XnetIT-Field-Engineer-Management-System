@@ -1,0 +1,58 @@
+﻿@model IEnumerable<XnetIT.Models.item>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.i_state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.model_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serial_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.i_availability)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.i_status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.i_state)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.model_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serial_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.i_availability)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.i_status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.i_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.i_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.i_id })
+        </td>
+    </tr>
+}
+
+</table>

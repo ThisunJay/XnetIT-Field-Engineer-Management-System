@@ -14,67 +14,74 @@
 
 @using (Html.BeginForm())
 {
-    <p>
-        Name: @Html.TextBox("Search") &nbsp; &nbsp;
-        <input style="border-radius: 1px" type="submit" value="Search" />
-    </p>
+<p>
+    Name: @Html.TextBox("Search") &nbsp; &nbsp;
+    Address: @Html.TextBox("Address") &nbsp; &nbsp;
+    Skills: @Html.TextBox("Skills") &nbsp; &nbsp;
+    <input style="border-radius: 1px" type="submit" value="Search" />
+</p>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Gov. ID
-        </th>
-        <th>
-            Contact Number
-        </th>
-        <th>
-            Email
-        </th>
-        <th>
-            Address
-        </th>
-        <th>
-            Skills
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table id="table_id" class="table">
+  
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.e_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.gov_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cnumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.e_address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.skills)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.e_id }) |
-                @*@Html.ActionLink("Details", "Details", new { id = item.e_id }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.e_id }) |
-
-                @Html.ActionLink("Rate Engineer", "RateEngineer", new { e_id = item.e_id, userId = HttpContext.Current.Session["UserID"].ToString()
-           })
-
-                | @Html.ActionLink("View Ratings", "ViewRatings", new { id = item.e_id })
-            </td>
+            <th>
+                Name
+            </th>
+            <th>
+                Gov. ID
+            </th>
+            <th>
+                Contact Number
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Skills
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
 
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.e_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gov_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cnumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.e_address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.skills)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.e_id }) |
+                    @*@Html.ActionLink("Details", "Details", new { id = item.e_id }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.e_id }) |
+
+                    @Html.ActionLink("Rate Engineer", "RateEngineer", new { e_id = item.e_id, userId = HttpContext.Current.Session["UserID"].ToString()
+               })
+
+                    | @Html.ActionLink("View Ratings", "ViewRatings", new { id = item.e_id })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

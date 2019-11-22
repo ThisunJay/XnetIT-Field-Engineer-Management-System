@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <h2>Jobs</h2>
 
 <p>
@@ -104,9 +105,9 @@
 
                 <dd>
                     @Html.ActionLink("Change Job Status", "Edit", new { id = item.job_id }) |
-                    @Html.ActionLink("Remove", "Delete", new { id = item.job_id }) 
-                @*@Html.ActionLink("Engineer", "../Engineers/Index", new { id = item.job_id })*@
-                    </dd>
+                    @Html.ActionLink("Remove", "Delete", new { id = item.job_id })
+                    @*@Html.ActionLink("Engineer", "../Engineers/Index", new { id = item.job_id })*@
+                </dd>
 
             </dl>
 
@@ -121,14 +122,14 @@
 
 @*<script>
 
-    $(document).ready(function () {
-    $('.GetReviewsLink').on('click', function (e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            $.get('@Url.Action("RatingsView")', { id: id }, function (result) {
-                $('#SomeDiv').html(result);
+        $(document).ready(function () {
+        $('.GetReviewsLink').on('click', function (e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                $.get('@Url.Action("RatingsView")', { id: id }, function (result) {
+                    $('#SomeDiv').html(result);
+                });
             });
         });
-    });
 
-</script>*@
+    </script>*@

@@ -31,6 +31,17 @@
     <Property Name="e_address" Type="varchar" MaxLength="100" />
     <Property Name="skills" Type="varchar" MaxLength="200" />
   </EntityType>
+  <EntityType Name="items">
+    <Key>
+      <PropertyRef Name="i_id" />
+    </Key>
+    <Property Name="i_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="i_state" Type="varchar" MaxLength="50" />
+    <Property Name="model_number" Type="varchar" MaxLength="100" />
+    <Property Name="serial_number" Type="varchar" MaxLength="100" />
+    <Property Name="i_availability" Type="varchar" MaxLength="50" />
+    <Property Name="i_status" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="job">
     <Key>
       <PropertyRef Name="job_id" />
@@ -150,6 +161,7 @@
     <EntitySet Name="assign_engineer" EntityType="Self.assign_engineer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="eng_ratings" EntityType="Self.eng_ratings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="engineer" EntityType="Self.engineer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="items" EntityType="Self.items" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="job" EntityType="Self.job" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="job_ratings" EntityType="Self.job_ratings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
