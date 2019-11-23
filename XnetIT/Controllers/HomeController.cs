@@ -41,11 +41,11 @@ namespace XnetIT.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return View();
+                    return Content("Invaid Register Details");
 
                 db.users.Add(userToCreate);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Login");
 
             }
             catch

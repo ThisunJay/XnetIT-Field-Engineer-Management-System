@@ -15,14 +15,22 @@ namespace XnetIT.Controllers
         // GET: Jobs
         public ActionResult Index(string Search)
         {
-            var jobs = from job in db.jobs select job;
-
-            if (!String.IsNullOrEmpty(Search))
+            if (Session["UserID"] == null)
             {
-                jobs = jobs.Where(e => e.title.Contains(Search));
+                return RedirectToAction("Index", "Home");
             }
+            else
+            {
+                var jobs = from job in db.jobs select job;
 
-            return View(jobs.ToList());
+                if (!String.IsNullOrEmpty(Search))
+                {
+                    jobs = jobs.Where(e => e.title.Contains(Search));
+                }
+
+                return View(jobs.ToList());
+            }
+            
         }
 
         // GET: Jobs/Details/5

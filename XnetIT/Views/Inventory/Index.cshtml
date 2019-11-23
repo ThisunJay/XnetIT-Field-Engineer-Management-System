@@ -5,54 +5,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Inventory</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Item", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-hover" id="inventoryTable">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.i_state)
+            State
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.model_number)
+            Model Number
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.serial_number)
+            Serial Number
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.i_availability)
+            Availability
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.i_status)
+            Status
         </th>
-        <th></th>
+        <th>
+            Options
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.i_state)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.model_number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.serial_number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.i_availability)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.i_status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.i_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.i_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.i_id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr class="success">
+            <td>
+                @Html.DisplayFor(modelItem => item.i_state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.model_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.serial_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.i_availability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.i_status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.i_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.i_id })
+            </td>
+        </tr>
+    }
 
 </table>

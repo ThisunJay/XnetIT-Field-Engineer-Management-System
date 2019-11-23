@@ -27,6 +27,10 @@
                     {
 
                         @*<li>Hello, @HttpContext.Current.Session["UserName"]</li>*@
+                        <li>@Html.ActionLink("Engineers Management", "Index", "Engineers")</li>
+                        <li>@Html.ActionLink("Jobs Management", "Index", "Jobs")</li>
+                        <li>@Html.ActionLink("Inventory Management", "Index", "Inventory")</li>
+
                         string hello = "Hello, " + @HttpContext.Current.Session["UserName"];
                         <li>@Html.ActionLink(hello, "Index", "Home")</li>
                     }

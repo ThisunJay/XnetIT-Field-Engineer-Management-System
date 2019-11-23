@@ -13,23 +13,31 @@ namespace XnetIT.Controllers
         // GET: Engineers
         public ActionResult Index(string Search, string Address, string Skills, int? i)
         {
-            
-            var engineers = from eng in db.engineers select eng;
 
-            if (!String.IsNullOrEmpty(Search))
+            if (Session["UserID"] == null)
             {
-                engineers = engineers.Where(e => e.e_name.Contains(Search));
+                return RedirectToAction("Index", "Home");
             }
-            else if (!String.IsNullOrEmpty(Address))
+            else
             {
-                engineers = engineers.Where(e => e.e_address.Contains(Address));
-            }
-            else if (!String.IsNullOrEmpty(Skills))
-            {
-                engineers = engineers.Where(e => e.skills.Contains(Skills));
+                var engineers = from eng in db.engineers select eng;
+
+                if (!String.IsNullOrEmpty(Search))
+                {
+                    engineers = engineers.Where(e => e.e_name.Contains(Search));
+                }
+                else if (!String.IsNullOrEmpty(Address))
+                {
+                    engineers = engineers.Where(e => e.e_address.Contains(Address));
+                }
+                else if (!String.IsNullOrEmpty(Skills))
+                {
+                    engineers = engineers.Where(e => e.skills.Contains(Skills));
+                }
+
+                return View(engineers.ToList());
             }
 
-            return View(engineers.ToList());
         }
 
         // GET: Engineers/Details/5

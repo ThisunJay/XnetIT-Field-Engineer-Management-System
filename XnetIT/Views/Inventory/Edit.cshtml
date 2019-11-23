@@ -5,13 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    List<SelectListItem> avai = new List<SelectListItem>();
+    avai.Add(new SelectListItem() { Text = "Available", Value = "Available" });
+    avai.Add(new SelectListItem() { Text = "Not Available", Value = "Not Available" });
+
+    List<SelectListItem> stat = new List<SelectListItem>();
+    stat.Add(new SelectListItem() { Text = "In Warehouse", Value = "In Warehouse" });
+    stat.Add(new SelectListItem() { Text = "On Site", Value = "On Site" });
+
+}
+
 <h2>Edit</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>item</h4>
         <hr />
@@ -19,7 +30,8 @@
         @Html.HiddenFor(model => model.i_id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.i_state, htmlAttributes: new { @class = "control-label col-md-2" })
+            @*@Html.LabelFor(model => model.i_state, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">State</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.i_state, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.i_state, "", new { @class = "text-danger" })
@@ -27,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.model_number, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Model Number</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.model_number, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.model_number, "", new { @class = "text-danger" })
@@ -35,7 +47,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.serial_number, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Serial Number</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.serial_number, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.serial_number, "", new { @class = "text-danger" })
@@ -43,24 +55,24 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.i_availability, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Availability</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.i_availability, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.i_availability, avai, "Select Availability", new { @class = "form-control", @id = "avai" })
                 @Html.ValidationMessageFor(model => model.i_availability, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.i_status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Status</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.i_status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.i_status, stat, "Select Status", new { @class = "form-control", @id = "stat" })
                 @Html.ValidationMessageFor(model => model.i_status, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Edit" class="btn btn-default" />
             </div>
         </div>
     </div>

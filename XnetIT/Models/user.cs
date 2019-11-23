@@ -11,7 +11,8 @@ namespace XnetIT.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class user
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,8 +23,13 @@ namespace XnetIT.Models
         }
     
         public int u_id { get; set; }
+
+        [Required(ErrorMessage = "Email is Required")]
         public string u_email { get; set; }
+
+        [Required(ErrorMessage = "Password is Required")]
         public string u_pass { get; set; }
+
         public string u_type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

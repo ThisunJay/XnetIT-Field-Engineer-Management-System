@@ -11,7 +11,8 @@ namespace XnetIT.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class job
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,10 +23,16 @@ namespace XnetIT.Models
         }
     
         public int job_id { get; set; }
+
+        [Required(ErrorMessage = "Title is Required")]
         public string title { get; set; }
+
+        [Required(ErrorMessage = "Address is Required")]
         public string j_address { get; set; }
         public Nullable<System.DateTime> j_date { get; set; }
         public Nullable<System.TimeSpan> j_time { get; set; }
+
+        [Required(ErrorMessage = "Site Contact Number is Required")]
         public string site_contact { get; set; }
         public string j_status { get; set; }
     

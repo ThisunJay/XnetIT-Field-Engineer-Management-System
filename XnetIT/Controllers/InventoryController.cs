@@ -14,14 +14,24 @@ namespace XnetIT.Controllers
         // GET: Inventory
         public ActionResult Index()
         {
-            var items = from item in db.items select item;
 
-            //if (!String.IsNullOrEmpty(Search))
-            //{
-            //    engineers = engineers.Where(e => e.e_name.Contains(Search));
-            //}
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
 
-            return View(items.ToList());
+                var items = (from item in db.items select item).ToList();
+
+                //if (!String.IsNullOrEmpty(Search))
+                //{
+                //    engineers = engineers.Where(e => e.e_name.Contains(Search));
+                //}
+                //return Json(new { data = items }, JsonRequestBehavior.AllowGet);
+                return View(items);
+            }
+
         }
 
         // GET: Inventory/Details/5
@@ -44,6 +54,9 @@ namespace XnetIT.Controllers
             {
                 if (!ModelState.IsValid)
                     return View();
+
+                itemToCreate.i_status = "In Warehouse";
+                itemToCreate.i_availability = "Available";
 
                 db.items.Add(itemToCreate);
                 db.SaveChanges();

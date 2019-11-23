@@ -11,13 +11,21 @@ namespace XnetIT.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class item
     {
         public int i_id { get; set; }
+
+        [Required(ErrorMessage = "State is Required")]
         public string i_state { get; set; }
+
+        [Required(ErrorMessage = "Model Number is Required")]
         public string model_number { get; set; }
+
+        [Required(ErrorMessage = "Serial Number is Required")]
         public string serial_number { get; set; }
+
         public string i_availability { get; set; }
         public string i_status { get; set; }
     }

@@ -11,7 +11,8 @@ namespace XnetIT.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class engineer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,13 +21,26 @@ namespace XnetIT.Models
             this.assign_engineer = new HashSet<assign_engineer>();
             this.eng_ratings = new HashSet<eng_ratings>();
         }
-    
+
         public int e_id { get; set; }
+
+        [Required(ErrorMessage = "Engineer Name is Required")]
         public string e_name { get; set; }
+
+        [Required(ErrorMessage = "Engineer GOV_ID is Required")]
         public string gov_id { get; set; }
+
+        [Required(ErrorMessage = "Engineer Contact Number is Required")]
         public string cnumber { get; set; }
+
+        [Required(ErrorMessage = "Engineer Email is Required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string email { get; set; }
+
+        [Required(ErrorMessage = "Engineer Address is Required")]
         public string e_address { get; set; }
+
+        [Required(ErrorMessage = "Engineer Skills are Required")]
         public string skills { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
