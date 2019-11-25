@@ -30,7 +30,6 @@
             background-color: #4CAF50;
             color: white;
         }
-
 </style>
 
 <h2>Engineers List</h2>
@@ -41,18 +40,20 @@
 
 @using (Html.BeginForm())
 {
-<p>
-    Name: @Html.TextBox("Search") &nbsp; &nbsp;
-    Address: @Html.TextBox("Address") &nbsp; &nbsp;
-    Skills: @Html.TextBox("Skills") &nbsp; &nbsp;
-    <input style="border-radius: 1px" type="submit" value="Search" />
-</p>
+    <p>
+        Name: @Html.TextBox("Search") &nbsp; &nbsp;
+        Address: @Html.TextBox("Address") &nbsp; &nbsp;
+        Skills: @Html.TextBox("Skills") &nbsp; &nbsp;
+        <input style="border-radius: 1px" type="submit" value="Search" />
+    </p>
 }
 
-<hr/>
+<hr />
+@Html.ActionLink("Generate Report in PDF", "Reports", new { ReportType = "PDF" }) | @Html.ActionLink("Generate Report in Excel", "Reports", new { ReportType = "Excel" })
+<hr />
 
 <table id="customers">
-  
+
     <thead>
         <tr>
             <th>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,7 @@ namespace XnetIT.Controllers
         private xnetDBEntities db = new xnetDBEntities();
 
         // GET: Inventory
-        public ActionResult Index()
+        public ActionResult Index(string State, string ModelNumber, string SerialNumber, string Availability)
         {
 
             if (Session["UserID"] == null)
@@ -21,15 +22,30 @@ namespace XnetIT.Controllers
             }
             else
             {
+                var items = (from item in db.items select item);
 
-                var items = (from item in db.items select item).ToList();
-
+                if (!String.IsNullOrEmpty(State))
+                {
+                    items = items.Where(i => i.i_state.Contains(State));
+                }
+                else if (!String.IsNullOrEmpty(ModelNumber))
+                {
+                    items = items.Where(i => i.model_number.Contains(ModelNumber));
+                }
+                else if (!String.IsNullOrEmpty(SerialNumber))
+                {
+                    items = items.Where(i => i.serial_number.Contains(SerialNumber));
+                }
+                else if (!String.IsNullOrEmpty(Availability))
+                {
+                    items = items.Where(i => i.i_availability.Equals(Availability));
+                }
                 //if (!String.IsNullOrEmpty(Search))
                 //{
                 //    engineers = engineers.Where(e => e.e_name.Contains(Search));
                 //}
                 //return Json(new { data = items }, JsonRequestBehavior.AllowGet);
-                return View(items);
+                return View(items.ToList());
             }
 
         }
@@ -127,6 +143,39 @@ namespace XnetIT.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Reports(string ReportType)
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/InventoryReport.rdlc");
+
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "InventoryDataSet";
+            reportDataSource.Value = db.items.ToList();
+            localReport.DataSources.Add(reportDataSource);
+            String reportType = ReportType;
+            String mimeType;
+            String encoding;
+            String fileNameExtension;
+
+            if (reportType == "PDF")
+            {
+                fileNameExtension = "PDF";
+            }
+            else if (reportType == "Excel")
+            {
+                fileNameExtension = "xlsx";
+            }
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedByte;
+            renderedByte = localReport.Render(reportType, "", out mimeType, out encoding, out fileNameExtension,
+                out streams, out warnings);
+            Response.AddHeader("content-disposition", "attachment:filename= items_report." + fileNameExtension);
+            return File(renderedByte, fileNameExtension);
+
         }
     }
 }

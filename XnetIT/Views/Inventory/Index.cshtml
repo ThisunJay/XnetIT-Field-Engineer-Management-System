@@ -5,11 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Inventory</h2>
+@{
+    List<SelectListItem> selectSearch = new List<SelectListItem>();
+    selectSearch.Add(new SelectListItem() { Text = "Available", Value = "Available" });
+    selectSearch.Add(new SelectListItem() { Text = "Not Available", Value = "Not Available" });
+
+}
+
+<h2>Inventory Management</h2>
 
 <p>
     @Html.ActionLink("Add New Item", "Create")
 </p>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    <p>
+        State: @Html.TextBox("State") &nbsp; &nbsp;
+        Model Number: @Html.TextBox("ModelNumber") &nbsp; &nbsp;
+        Serial Number: @Html.TextBox("SerialNumber") &nbsp; &nbsp;
+        Availability: @Html.DropDownList("Availability", selectSearch, "Select Availability") &nbsp; &nbsp;
+        <input style="border-radius: 1px" type="submit" value="Search" />
+    </p>
+}
+
+@Html.ActionLink("Generate Report in PDF", "Reports", new { ReportType = "PDF" }) | @Html.ActionLink("Generate Report in Excel", "Reports", new { ReportType = "Excel" })
+<hr />
+
 <table class="table table-striped table-hover" id="inventoryTable">
     <tr>
         <th>

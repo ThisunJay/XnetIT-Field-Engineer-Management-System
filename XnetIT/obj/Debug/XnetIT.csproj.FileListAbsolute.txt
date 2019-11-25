@@ -78,3 +78,9 @@ D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.SqlServer.dll
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.xml
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.SqlServer.xml
 D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.csprojAssemblyReference.cache
+D:\Visual Studio Projects\XnetIT\XnetIT\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Visual Studio Projects\XnetIT\XnetIT\bin\Microsoft.ReportViewer.Common.dll
+D:\Visual Studio Projects\XnetIT\XnetIT\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\Visual Studio Projects\XnetIT\XnetIT\bin\Microsoft.SqlServer.Types.dll
+D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\RdlCompile.cache
+D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\RdlCompile.compiled

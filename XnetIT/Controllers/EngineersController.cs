@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 using XnetIT.Models;
@@ -164,6 +165,38 @@ namespace XnetIT.Controllers
 
             return View(EngAndRat);
         }
-        
+
+        public ActionResult Reports(string ReportType)
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/EngineerReport.rdlc");
+
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "EngineerDataSet";
+            reportDataSource.Value = db.engineers.ToList();
+            localReport.DataSources.Add(reportDataSource);
+            String reportType = ReportType;
+            String mimeType;
+            String encoding;
+            String fileNameExtension;
+
+            if (reportType == "PDF")
+            {
+                fileNameExtension = "PDF";
+            }
+            else if (reportType == "Excel")
+            {
+                fileNameExtension = "xlsx";
+            }
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedByte;
+            renderedByte = localReport.Render(reportType, "", out mimeType, out encoding, out fileNameExtension,
+                out streams, out warnings);
+            Response.AddHeader("content-disposition", "attachment:filename= eng_report." + fileNameExtension);
+            return File(renderedByte, fileNameExtension);
+            
+        }
     }
 }

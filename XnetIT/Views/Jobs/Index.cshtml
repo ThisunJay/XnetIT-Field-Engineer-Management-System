@@ -12,6 +12,20 @@
     @Html.ActionLink("Add New Job", "Create")
 </p>
 
+@using (Html.BeginForm())
+{
+<p>
+    Title: @Html.TextBox("Title") &nbsp; &nbsp;
+    Address: @Html.TextBox("Address") &nbsp; &nbsp;
+    Date: @Html.Editor("date", new { htmlAttributes = new { Type = "date" } }) &nbsp; &nbsp;
+    <input style="border-radius: 1px" type="submit" value="Search" />
+</p>
+}
+
+<hr />
+@Html.ActionLink("Generate Report in PDF", "Reports", new { ReportType = "PDF" }) | @Html.ActionLink("Generate Report in Excel", "Reports", new { ReportType = "Excel" })
+<hr />
+
 @foreach (var item in Model)
 {
     <hr />

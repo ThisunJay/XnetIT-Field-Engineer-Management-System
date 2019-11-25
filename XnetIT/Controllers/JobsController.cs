@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,7 @@ namespace XnetIT.Controllers
         private xnetDBEntities db = new xnetDBEntities();
 
         // GET: Jobs
-        public ActionResult Index(string Search)
+        public ActionResult Index(string Title, string Address, DateTime? date)
         {
             if (Session["UserID"] == null)
             {
@@ -23,9 +24,17 @@ namespace XnetIT.Controllers
             {
                 var jobs = from job in db.jobs select job;
 
-                if (!String.IsNullOrEmpty(Search))
+                if (!String.IsNullOrEmpty(Title))
                 {
-                    jobs = jobs.Where(e => e.title.Contains(Search));
+                    jobs = jobs.Where(e => e.title.Contains(Title));
+                }
+                else if (!String.IsNullOrEmpty(Address))
+                {
+                    jobs = jobs.Where(e => e.j_address.Contains(Address));
+                }
+                else if (date != null)
+                {
+                    jobs = jobs.Where(e => e.j_date == date);
                 }
 
                 return View(jobs.ToList());
@@ -232,6 +241,39 @@ namespace XnetIT.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Reports(string ReportType)
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/JobsReport.rdlc");
+
+            ReportDataSource reportDataSource = new ReportDataSource();
+            reportDataSource.Name = "JobDataSet";
+            reportDataSource.Value = db.jobs.ToList();
+            localReport.DataSources.Add(reportDataSource);
+            String reportType = ReportType;
+            String mimeType;
+            String encoding;
+            String fileNameExtension;
+
+            if (reportType == "PDF")
+            {
+                fileNameExtension = "PDF";
+            }
+            else if (reportType == "Excel")
+            {
+                fileNameExtension = "xlsx";
+            }
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedByte;
+            renderedByte = localReport.Render(reportType, "", out mimeType, out encoding, out fileNameExtension,
+                out streams, out warnings);
+            Response.AddHeader("content-disposition", "attachment:filename= jobs_report." + fileNameExtension);
+            return File(renderedByte, fileNameExtension);
+
         }
 
     }
