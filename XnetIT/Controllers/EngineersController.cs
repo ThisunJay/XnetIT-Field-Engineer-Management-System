@@ -198,5 +198,12 @@ namespace XnetIT.Controllers
             return File(renderedByte, fileNameExtension);
             
         }
+
+        public ActionResult ViewJobAssigns()
+        {
+            var jobs = (from j in db.assign_engineer select j).ToList();
+
+            return View(jobs);
+        }
     }
 }

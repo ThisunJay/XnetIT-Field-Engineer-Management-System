@@ -69,7 +69,6 @@ D:\Visual Studio Projects\XnetIT\XnetIT\bin\System.Web.WebPages.Razor.xml
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\Newtonsoft.Json.xml
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\Antlr3.Runtime.pdb
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.csproj.CoreCompileInputs.cache
 D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.csproj.CopyComplete
 D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.dll
 D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.pdb
@@ -78,9 +77,10 @@ D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.SqlServer.dll
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.xml
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\EntityFramework.SqlServer.xml
 D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.csprojAssemblyReference.cache
-D:\Visual Studio Projects\XnetIT\XnetIT\bin\Microsoft.ReportViewer.WebForms.dll
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\Microsoft.ReportViewer.Common.dll
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
 D:\Visual Studio Projects\XnetIT\XnetIT\bin\Microsoft.SqlServer.Types.dll
+D:\Visual Studio Projects\XnetIT\XnetIT\bin\Microsoft.ReportViewer.WebForms.dll
 D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\RdlCompile.cache
 D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\RdlCompile.compiled
+D:\Visual Studio Projects\XnetIT\XnetIT\obj\Debug\XnetIT.csproj.CoreCompileInputs.cache

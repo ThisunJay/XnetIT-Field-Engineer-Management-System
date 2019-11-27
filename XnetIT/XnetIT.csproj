@@ -264,6 +264,7 @@
     <Content Include="xnetDBDataSet.xsc">
       <DependentUpon>xnetDBDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Views\Engineers\ViewJobAssigns.cshtml" />
     <None Include="xnetDBDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>xnetDBDataSet.Designer.cs</LastGenOutput>

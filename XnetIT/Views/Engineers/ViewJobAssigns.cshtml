@@ -1,0 +1,43 @@
+﻿@model IEnumerable<XnetIT.Models.assign_engineer>
+
+@{
+    ViewBag.Title = "ViewJobAssigns";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Job Assigns</h2>
+<hr/>
+<table class="table">
+    <tr>
+        <th>
+            Date
+        </th>
+        <th>
+            Time
+        </th>
+        <th>
+            Engineer's Name
+        </th>
+        <th>
+            Job
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.assign_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.assign_time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.engineer.e_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.job.title)
+        </td>
+    </tr>
+}
+
+</table>
