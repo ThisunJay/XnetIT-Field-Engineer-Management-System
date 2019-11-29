@@ -106,6 +106,14 @@
                             @Html.ActionLink("View Ratings", "ViewRatings", new { id = item.job_id }, new { @class = "GetReviewsLink", data_id = item.job_id })
                             @*< div id = "SomeDiv" ></ div >*@
                         }
+                        else if (stat == "Cancelled")
+                        {
+                            <h3>Cancelled</h3>
+                        }
+                        else if (stat == "Closed")
+                        {
+                            <h3>Closed</h3>
+                        }
                         else
                         {
                             <h3 style="color: blue">Engineer Assigned</h3>
