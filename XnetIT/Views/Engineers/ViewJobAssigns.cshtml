@@ -7,6 +7,14 @@
 
 <h2>View Job Assigns</h2>
 <hr/>
+
+<ul class="nav nav-tabs">
+
+    <li>@Html.ActionLink("Engineers", "Index")</li>
+    <li class="active">@Html.ActionLink("View Assigned Details", "ViewJobAssigns")</li>
+
+</ul>
+
 <table class="table">
     <tr>
         <th>
@@ -26,7 +34,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.assign_date)
+            @DateTime.Parse(Html.DisplayFor(modelItem => item.assign_date).ToString()).ToShortDateString()
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.assign_time)

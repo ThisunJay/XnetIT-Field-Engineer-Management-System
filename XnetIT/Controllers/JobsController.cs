@@ -219,6 +219,7 @@ namespace XnetIT.Controllers
                 if (!ModelState.IsValid)
                     return View();
 
+                engToAssign.assign_date = DateTime.Today;
                 db.assign_engineer.Add(engToAssign);
                 db.SaveChanges();
 

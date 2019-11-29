@@ -32,21 +32,24 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="control-label col-md-2">Date</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.assign_date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                @Html.ValidationMessageFor(model => model.assign_date, "", new { @class = "text-danger" })
+        <div id="hideThese2">
+            <div class="form-group">
+                <label class="control-label col-md-2">Date</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.assign_date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.assign_date, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="control-label col-md-2">Time</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.assign_time, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
-                @Html.ValidationMessageFor(model => model.assign_time, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Time</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.assign_time, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
+                    @Html.ValidationMessageFor(model => model.assign_time, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
+        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -66,7 +69,9 @@
     <script>
 
         var hide1 = document.getElementById("hideThese");
+        var hide2 = document.getElementById("hideThese2");
         hide1.style.display = "none";
+        hide2.style.display = "none";
         var jId = @Request.QueryString["jobId"];
 
         function setValues() {
